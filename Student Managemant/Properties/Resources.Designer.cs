@@ -123,6 +123,16 @@ namespace Student_Managemant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_lock_4341303_120563 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder-lock-4341303_120563", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap login_square_arrow_button_outline_icon_icons_com_73220 {
             get {
                 object obj = ResourceManager.GetObject("login-square-arrow-button-outline_icon-icons.com_73220", resourceCulture);
@@ -146,6 +156,26 @@ namespace Student_Managemant.Properties {
         internal static System.Drawing.Bitmap stop_close_off_14465 {
             get {
                 object obj = ResourceManager.GetObject("stop_close_off_14465", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap verify_icon_227246 {
+            get {
+                object obj = ResourceManager.GetObject("verify_icon_227246", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap verify_icon_227246__1_ {
+            get {
+                object obj = ResourceManager.GetObject("verify_icon_227246 (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

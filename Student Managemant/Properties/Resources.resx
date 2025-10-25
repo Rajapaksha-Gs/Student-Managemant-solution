@@ -121,8 +121,17 @@
   <data name="emblemimportant_103451" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\emblemimportant_103451.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="verify_icon_227246" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\verify_icon_227246.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="eye_visible_hide_hidden_show_icon_145988" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\eye_visible_hide_hidden_show_icon_145988.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="minimize_14775" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\minimize_14775.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconfinder-lock-4341303_120563" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconfinder-lock-4341303_120563.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="login-square-arrow-button-outline_icon-icons.com_73220" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\login-square-arrow-button-outline_icon-icons.com_73220.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -130,11 +139,11 @@
   <data name="eye_slash_visible_hide_hidden_show_icon_145987" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\eye_slash_visible_hide_hidden_show_icon_145987.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="graduation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\graduation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="stop_close_off_14465" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\stop_close_off_14465.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="minimize_14775" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\minimize_14775.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="arrow_login_icon_175875 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\arrow_login_icon_175875 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -142,7 +151,7 @@
   <data name="arrow_login_icon_175875" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\arrow_login_icon_175875.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="graduation" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\graduation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="verify_icon_227246 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\verify_icon_227246 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
