@@ -118,29 +118,41 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="emblemimportant_103451" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\emblemimportant_103451.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="verify_icon_227246" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\verify_icon_227246.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="eye_visible_hide_hidden_show_icon_145988" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\eye_visible_hide_hidden_show_icon_145988.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="arrows_maximize_icon_151593" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrows_maximize_icon_151593.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="graduate-cap_icon-icons2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\graduate-cap_icon-icons.com_727122.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="arrow_login_icon_175875" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrow_login_icon_175875.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="maximize_icon_191835" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\maximize_icon_191835.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="graduate-cap_icon-icons.com_72712" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\graduate-cap_icon-icons.com_72712.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="minimize_14775" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\minimize_14775.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="angle-arrow-down_icon-icons.com_73683" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\angle-arrow-down_icon-icons.com_73683.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="iconfinder-lock-4341303_120563" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconfinder-lock-4341303_120563.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="login-square-arrow-button-outline_icon-icons.com_73220" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\login-square-arrow-button-outline_icon-icons.com_73220.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="university_graduate_cap_icon_180347" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\university_graduate_cap_icon_180347.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="eye_slash_visible_hide_hidden_show_icon_145987" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\eye_slash_visible_hide_hidden_show_icon_145987.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="verify_icon_227246 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\verify_icon_227246 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="graduation" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\graduation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="eye_visible_hide_hidden_show_icon_145988" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eye_visible_hide_hidden_show_icon_145988.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="stop_close_off_14465" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\stop_close_off_14465.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -148,10 +160,34 @@
   <data name="arrow_login_icon_175875 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\arrow_login_icon_175875 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="arrow_login_icon_175875" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\arrow_login_icon_175875.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="minimize_14775 (1)1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\minimize_14775 (1)1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="verify_icon_227246 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\verify_icon_227246 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="arrow-down_23784" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrow-down_23784.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fashion_school_cap_graduation_university_education_icon_267073" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fashion_school_cap_graduation_university_education_icon_267073.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="graduate-cap_icon-icons1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\graduate-cap_icon-icons.com_727121.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="graduation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\graduation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="eye_slash_visible_hide_hidden_show_icon_145987" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eye_slash_visible_hide_hidden_show_icon_145987.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="emblemimportant_103451" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\emblemimportant_103451.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="login-square-arrow-button-outline_icon-icons.com_73220" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\login-square-arrow-button-outline_icon-icons.com_73220.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="minimize_14775 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\minimize_14775 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="4115235-exit-logout-sign-out_114030" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\4115235-exit-logout-sign-out_114030.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
