@@ -116,8 +116,10 @@ namespace Student_Managemant.PLA.Froms
                                 if (userRole.Equals("Admin", StringComparison.OrdinalIgnoreCase))
                                 {
 
-                                    FormMain adminForm = new FormMain();
-                                    adminForm.Show();
+                                    FormMain formMain = new FormMain();
+                                    formMain.Username = username;
+                                    formMain.Role = userRole;
+                                    formMain.ShowDialog();
                                     this.Hide();
                                 }
                                 else if (userRole.Equals("Student", StringComparison.OrdinalIgnoreCase))
