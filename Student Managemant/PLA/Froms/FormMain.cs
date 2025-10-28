@@ -67,29 +67,37 @@ namespace Student_Managemant.PLA.Froms
         private void buttonDashboard_Click(object sender, EventArgs e)
         {
             MoveSidePanel(buttonDashboard);
+            userControlDashbord1.Count();
+            userControlDashbord1.Visible = true;
         }
 
         private void buttonAttendance_Click(object sender, EventArgs e)
         {
             MoveSidePanel(buttonAttendance);
+            userControlDashbord1.Visible = false;
+
         }
 
         private void buttonAddClass_Click(object sender, EventArgs e)
         {
             MoveSidePanel(buttonAddClass);
+            userControlDashbord1.Visible = false;
         }
 
         private void buttonAddStudent_Click(object sender, EventArgs e)
         {
             MoveSidePanel(buttonAddStudent);
+            userControlDashbord1.Visible = false;
         }
         private void buttonReport_Click(object sender, EventArgs e)
         {
             MoveSidePanel(buttonReport);
+            userControlDashbord1.Visible = false;
         }
         private void buttonRegister_Click(object sender, EventArgs e)
         {
             MoveSidePanel(buttonRegister);
+            userControlDashbord1.Visible = false;
         }
         // Fixes CS0501, CS1002, and SPELL: Rename to MoveSidePanel and provide a method body
         private void MoveSidePanel(Control button)

@@ -81,8 +81,8 @@ namespace Student_Managemant.PLA.Froms
         {
             string username = textBoxName.Text.Trim();
             string password = textBoxPassword.Text.Trim();
-
-            string connectionString = "Server=localhost; Database=attendens_managment_system; Uid=root; Pwd=;";
+string connectionString = "Server=localhost; Database=attendens_managment_system; Uid=root; Pwd=;";
+            
 
 
             if (username != String.Empty && password != String.Empty)

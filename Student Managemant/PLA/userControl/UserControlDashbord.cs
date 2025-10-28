@@ -12,9 +12,15 @@ namespace Student_Managemant.PLA.userControl
 {
     public partial class UserControlDashbord : UserControl
     {
+        private string connectionString = "Server=localhost; Database=attendens_managment_system; Uid=root; Pwd=;";
         public UserControlDashbord()
         {
             InitializeComponent();
+        }
+
+        public void Count()
+        {
+
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -25,6 +31,11 @@ namespace Student_Managemant.PLA.userControl
         private void label4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void UserControlDashbord_Load(object sender, EventArgs e)
+        {
+            Count();    
         }
     }
 }
