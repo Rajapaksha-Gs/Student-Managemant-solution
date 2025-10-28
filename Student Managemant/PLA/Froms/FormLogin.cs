@@ -124,8 +124,11 @@ namespace Student_Managemant.PLA.Froms
                                 }
                                 else if (userRole.Equals("Student", StringComparison.OrdinalIgnoreCase))
                                 {
+                                    FormMain formMain = new FormMain();
+                                    formMain.Username = username;
+                                    formMain.Role = userRole;
+                                    formMain.ShowDialog();
 
-                                    MessageBox.Show("Welcome Student!");
                                     this.Hide();
                                 }
                             }

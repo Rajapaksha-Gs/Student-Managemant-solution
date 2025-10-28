@@ -57,6 +57,7 @@
             label4 = new Label();
             labelTime = new Label();
             timerDateAndTime = new System.Windows.Forms.Timer(components);
+            userControlDashbord1 = new Student_Managemant.PLA.userControl.UserControlDashbord();
             panel1.SuspendLayout();
             panel4.SuspendLayout();
             panel2.SuspendLayout();
@@ -208,7 +209,7 @@
             panelSlide.Location = new Point(0, 0);
             panelSlide.Name = "panelSlide";
             panelSlide.Size = new Size(10, 60);
-            panelSlide.TabIndex = 1;
+            panelSlide.TabIndex = 0;
             // 
             // panel2
             // 
@@ -334,6 +335,7 @@
             pictureBoxExpand.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxExpand.TabIndex = 2;
             pictureBoxExpand.TabStop = false;
+            pictureBoxExpand.Click += pictureBoxExpand_Click;
             // 
             // pictureBox2
             // 
@@ -418,12 +420,24 @@
             // 
             timerDateAndTime.Tick += timerDateAndTime_Tick;
             // 
+            // userControlDashbord1
+            // 
+            userControlDashbord1.BackColor = Color.White;
+            userControlDashbord1.Dock = DockStyle.Fill;
+            userControlDashbord1.Font = new Font("Century Gothic", 9.75F);
+            userControlDashbord1.Location = new Point(258, 184);
+            userControlDashbord1.Margin = new Padding(4);
+            userControlDashbord1.Name = "userControlDashbord1";
+            userControlDashbord1.Size = new Size(926, 497);
+            userControlDashbord1.TabIndex = 0;
+            // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1184, 681);
+            Controls.Add(userControlDashbord1);
             Controls.Add(panelBack);
             Controls.Add(panel1);
             Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -481,5 +495,6 @@
         private Button buttonReport;
         private Button buttonLogOut;
         private System.Windows.Forms.Timer timerDateAndTime;
+        private userControl.UserControlDashbord userControlDashbord1;
     }
 }

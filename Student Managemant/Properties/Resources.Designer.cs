@@ -133,6 +133,26 @@ namespace Student_Managemant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap education_presentation_lecture_student_teacher_classroom_icon_266883 {
+            get {
+                object obj = ResourceManager.GetObject("education_presentation_lecture_student_teacher_classroom_icon_266883", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap education_presentation_lecture_student_teacher_classroom_icon_2668831 {
+            get {
+                object obj = ResourceManager.GetObject("education_presentation_lecture_student_teacher_classroom_icon_2668831", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap emblemimportant_103451 {
             get {
                 object obj = ResourceManager.GetObject("emblemimportant_103451", resourceCulture);
@@ -226,6 +246,16 @@ namespace Student_Managemant.Properties {
         internal static System.Drawing.Bitmap graduation1 {
             get {
                 object obj = ResourceManager.GetObject("graduation1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_513_classroom_class_teacher_room_4212901_114950 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder-513-classroom-class-teacher-room-4212901_114950", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -456,6 +486,16 @@ namespace Student_Managemant.Properties {
         internal static System.Drawing.Bitmap university_graduate_cap_icon_180347 {
             get {
                 object obj = ResourceManager.GetObject("university_graduate_cap_icon_180347", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap users_clients_group_16774 {
+            get {
+                object obj = ResourceManager.GetObject("users_clients_group_16774", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
