@@ -45,7 +45,7 @@ namespace Student_Managemant.PLA.Froms
                 buttonDashboard.Hide();
                 buttonAddClass.Hide();
                 buttonAddStudent.Hide();
-                
+                userControlDashbord1.Visible = false;
                 buttonRegister.Hide();
             }
 
@@ -66,7 +66,9 @@ namespace Student_Managemant.PLA.Froms
 
         private void buttonDashboard_Click(object sender, EventArgs e)
         {
+            
             MoveSidePanel(buttonDashboard);
+            userControlAddClass1.Visible = false;
             userControlDashbord1.Count();
             userControlDashbord1.Visible = true;
         }
@@ -74,6 +76,7 @@ namespace Student_Managemant.PLA.Froms
         private void buttonAttendance_Click(object sender, EventArgs e)
         {
             MoveSidePanel(buttonAttendance);
+            userControlAddClass1.Visible = false;
             userControlDashbord1.Visible = false;
 
         }
@@ -81,22 +84,26 @@ namespace Student_Managemant.PLA.Froms
         private void buttonAddClass_Click(object sender, EventArgs e)
         {
             MoveSidePanel(buttonAddClass);
+            userControlAddClass1.Visible = true;
             userControlDashbord1.Visible = false;
         }
 
         private void buttonAddStudent_Click(object sender, EventArgs e)
         {
             MoveSidePanel(buttonAddStudent);
+            userControlAddClass1.Visible = false;
             userControlDashbord1.Visible = false;
         }
         private void buttonReport_Click(object sender, EventArgs e)
         {
             MoveSidePanel(buttonReport);
+            userControlAddClass1.Visible = false;
             userControlDashbord1.Visible = false;
         }
         private void buttonRegister_Click(object sender, EventArgs e)
         {
             MoveSidePanel(buttonRegister);
+            userControlAddClass1.Visible = false;
             userControlDashbord1.Visible = false;
         }
         // Fixes CS0501, CS1002, and SPELL: Rename to MoveSidePanel and provide a method body

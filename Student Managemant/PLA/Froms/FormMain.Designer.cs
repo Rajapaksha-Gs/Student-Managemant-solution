@@ -58,6 +58,7 @@
             labelTime = new Label();
             timerDateAndTime = new System.Windows.Forms.Timer(components);
             userControlDashbord1 = new Student_Managemant.PLA.userControl.UserControlDashbord();
+            userControlAddClass1 = new Student_Managemant.PLA.userControl.UserControlAddClass();
             panel1.SuspendLayout();
             panel4.SuspendLayout();
             panel2.SuspendLayout();
@@ -431,12 +432,26 @@
             userControlDashbord1.Size = new Size(926, 497);
             userControlDashbord1.TabIndex = 0;
             // 
+            // userControlAddClass1
+            // 
+            userControlAddClass1.BackColor = Color.White;
+            userControlAddClass1.Dock = DockStyle.Fill;
+            userControlAddClass1.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            userControlAddClass1.Location = new Point(258, 184);
+            userControlAddClass1.Margin = new Padding(4);
+            userControlAddClass1.Name = "userControlAddClass1";
+            userControlAddClass1.Size = new Size(926, 497);
+            userControlAddClass1.TabIndex = 0;
+            userControlAddClass1.Tag = "iuytr";
+            userControlAddClass1.Visible = false;
+            // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1184, 681);
+            Controls.Add(userControlAddClass1);
             Controls.Add(userControlDashbord1);
             Controls.Add(panelBack);
             Controls.Add(panel1);
@@ -496,5 +511,6 @@
         private Button buttonLogOut;
         private System.Windows.Forms.Timer timerDateAndTime;
         private userControl.UserControlDashbord userControlDashbord1;
+        private userControl.UserControlAddClass userControlAddClass1;
     }
 }

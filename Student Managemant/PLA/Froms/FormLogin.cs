@@ -111,6 +111,7 @@ string connectionString = "Server=localhost; Database=attendens_managment_system
                                 textBoxName.Focus();
                                 pictureBoxError.Hide();
                                 labelError.Hide();
+                                this.Hide();
 
 
                                 if (userRole.Equals("Admin", StringComparison.OrdinalIgnoreCase))
@@ -120,7 +121,7 @@ string connectionString = "Server=localhost; Database=attendens_managment_system
                                     formMain.Username = username;
                                     formMain.Role = userRole;
                                     formMain.ShowDialog();
-                                    this.Hide();
+                                    this.Close();
                                 }
                                 else if (userRole.Equals("Student", StringComparison.OrdinalIgnoreCase))
                                 {
@@ -129,7 +130,7 @@ string connectionString = "Server=localhost; Database=attendens_managment_system
                                     formMain.Role = userRole;
                                     formMain.ShowDialog();
 
-                                    this.Hide();
+                                    this.Close();
                                 }
                             }
                             else
