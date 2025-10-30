@@ -66,12 +66,13 @@ namespace Student_Managemant.PLA.Froms
 
         private void buttonDashboard_Click(object sender, EventArgs e)
         {
-            
+
             MoveSidePanel(buttonDashboard);
             userControlAddClass1.Visible = false;
             userControlDashbord1.Count();
             userControlDashbord1.Visible = true;
             userControlAddStudent1.Visible = false;
+            userControl1Register1.Visible = false;
         }
 
         private void buttonAttendance_Click(object sender, EventArgs e)
@@ -81,6 +82,7 @@ namespace Student_Managemant.PLA.Froms
             userControlAddClass1.Visible = false;
             userControlDashbord1.Visible = false;
             userControlAddStudent1.Visible = false;
+            userControl1Register1.Visible = false;
 
         }
 
@@ -90,6 +92,7 @@ namespace Student_Managemant.PLA.Froms
             userControlAddClass1.Visible = true;
             userControlDashbord1.Visible = false;
             userControlAddStudent1.Visible = false;
+            userControl1Register1.Visible = false;
         }
 
         private void buttonAddStudent_Click(object sender, EventArgs e)
@@ -97,6 +100,7 @@ namespace Student_Managemant.PLA.Froms
             MoveSidePanel(buttonAddStudent);
             userControlAddClass1.Visible = false;
             userControlDashbord1.Visible = false;
+            userControl1Register1.Visible = false;
             userControlAddStudent1.Visible = true;
             userControlAddStudent1.ClearTxtBox();
         }
@@ -106,6 +110,7 @@ namespace Student_Managemant.PLA.Froms
             userControlAddClass1.Visible = false;
             userControlDashbord1.Visible = false;
             userControlAddStudent1.Visible = false;
+            userControl1Register1.Visible = false;
         }
         private void buttonRegister_Click(object sender, EventArgs e)
         {
@@ -113,6 +118,8 @@ namespace Student_Managemant.PLA.Froms
             userControlAddClass1.Visible = false;
             userControlDashbord1.Visible = false;
             userControlAddStudent1.Visible = false;
+            userControl1Register1.Visible = true;
+            userControlAddStudent1.ClearTxtBox();
         }
         // Fixes CS0501, CS1002, and SPELL: Rename to MoveSidePanel and provide a method body
         private void MoveSidePanel(Control button)
@@ -122,10 +129,15 @@ namespace Student_Managemant.PLA.Froms
 
         private void pictureBoxExpand_Click(object sender, EventArgs e)
         {
-            if(panelExpand.Visible)
+            if (panelExpand.Visible)
                 panelExpand.Visible = false;
             else
                 panelExpand.Visible = true;
+        }
+
+        private void buttonRegister_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

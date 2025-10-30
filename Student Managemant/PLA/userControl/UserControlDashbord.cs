@@ -23,7 +23,7 @@ namespace Student_Managemant.PLA.userControl
         {
             string query = "SELECT COUNT(*) FROM Class_Table";
             string query1 = "SELECT COUNT(*) FROM Student_Table";
-
+            string query3 = "SELECT COUNT(*) FROM User_Table";
 
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -55,6 +55,18 @@ namespace Student_Managemant.PLA.userControl
                     else
                     {
                         label2.Text = "0";
+                    }
+                }
+                using(MySqlCommand comandU = new MySqlCommand(query3, connection))
+                {
+                    object resultU = comandU.ExecuteScalar();
+                    if (resultU != null)
+                    {
+                        labelTotalRole.Text = resultU.ToString();
+                    }
+                    else
+                    {
+                        labelTotalRole.Text = "0";
                     }
                 }
 

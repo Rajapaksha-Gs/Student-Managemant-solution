@@ -72,15 +72,6 @@
             labelCountStudent = new Label();
             label15 = new Label();
             dataGridViewStudent = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
-            Column5 = new DataGridViewTextBoxColumn();
-            Column6 = new DataGridViewTextBoxColumn();
-            Column7 = new DataGridViewTextBoxColumn();
-            Column8 = new DataGridViewTextBoxColumn();
-            Column9 = new DataGridViewTextBoxColumn();
             pictureBoxSUser = new PictureBox();
             panel5 = new Panel();
             labelCountClass = new Label();
@@ -123,6 +114,15 @@
             buttonDelete = new Button();
             label14 = new Label();
             toolTip1 = new ToolTip(components);
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
+            Column5 = new DataGridViewTextBoxColumn();
+            Column6 = new DataGridViewTextBoxColumn();
+            Column7 = new DataGridViewTextBoxColumn();
+            Column8 = new DataGridViewTextBoxColumn();
+            Column9 = new DataGridViewTextBoxColumn();
             tabControlRegister.SuspendLayout();
             tabPageAddUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxErrorEmail).BeginInit();
@@ -656,66 +656,6 @@
             dataGridViewStudent.TabIndex = 4;
             dataGridViewStudent.CellClick += dataGridViewStudent_CellClick;
             // 
-            // Column1
-            // 
-            Column1.DataPropertyName = "_ID";
-            Column1.HeaderText = "ID";
-            Column1.Name = "Column1";
-            Column1.ReadOnly = true;
-            Column1.Visible = false;
-            // 
-            // Column2
-            // 
-            Column2.DataPropertyName = "Student_Name";
-            Column2.HeaderText = "Name";
-            Column2.Name = "Column2";
-            Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            Column3.DataPropertyName = "Student_Total";
-            Column3.HeaderText = "Password";
-            Column3.Name = "Column3";
-            Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            Column4.DataPropertyName = "Student_Male";
-            Column4.HeaderText = "PhoneNO";
-            Column4.Name = "Column4";
-            Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            Column5.DataPropertyName = "Student_Gender";
-            Column5.HeaderText = "CNIC";
-            Column5.Name = "Column5";
-            Column5.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            Column6.HeaderText = "DOB";
-            Column6.Name = "Column6";
-            Column6.ReadOnly = true;
-            // 
-            // Column7
-            // 
-            Column7.HeaderText = "Email";
-            Column7.Name = "Column7";
-            Column7.ReadOnly = true;
-            // 
-            // Column8
-            // 
-            Column8.HeaderText = "Address";
-            Column8.Name = "Column8";
-            Column8.ReadOnly = true;
-            // 
-            // Column9
-            // 
-            Column9.HeaderText = "Role";
-            Column9.Name = "Column9";
-            Column9.ReadOnly = true;
-            // 
             // pictureBoxSUser
             // 
             pictureBoxSUser.Cursor = Cursors.Hand;
@@ -1185,6 +1125,70 @@
             label14.TabIndex = 0;
             label14.Text = "Update And Delete";
             // 
+            // Column1
+            // 
+            Column1.DataPropertyName = "User_ID";
+            Column1.HeaderText = "ID";
+            Column1.Name = "Column1";
+            Column1.ReadOnly = true;
+            Column1.Visible = false;
+            // 
+            // Column2
+            // 
+            Column2.DataPropertyName = "User_name";
+            Column2.HeaderText = "Name";
+            Column2.Name = "Column2";
+            Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            Column3.DataPropertyName = "User_Pass";
+            Column3.HeaderText = "Password";
+            Column3.Name = "Column3";
+            Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            Column4.DataPropertyName = "User_pho";
+            Column4.HeaderText = "PhoneNO";
+            Column4.Name = "Column4";
+            Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            Column5.DataPropertyName = "User_CNIC";
+            Column5.HeaderText = "CNIC";
+            Column5.Name = "Column5";
+            Column5.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            Column6.DataPropertyName = "User_DOB";
+            Column6.HeaderText = "DOB";
+            Column6.Name = "Column6";
+            Column6.ReadOnly = true;
+            // 
+            // Column7
+            // 
+            Column7.DataPropertyName = "User_email";
+            Column7.HeaderText = "Email";
+            Column7.Name = "Column7";
+            Column7.ReadOnly = true;
+            // 
+            // Column8
+            // 
+            Column8.DataPropertyName = "User_add";
+            Column8.HeaderText = "Address";
+            Column8.Name = "Column8";
+            Column8.ReadOnly = true;
+            // 
+            // Column9
+            // 
+            Column9.DataPropertyName = "User_Role";
+            Column9.HeaderText = "Role";
+            Column9.Name = "Column9";
+            Column9.ReadOnly = true;
+            // 
             // UserControl1Register
             // 
             AutoScaleDimensions = new SizeF(10F, 21F);
@@ -1271,15 +1275,6 @@
         private Label label20;
         private Label labelTotalUser;
         private Label label21;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
-        private DataGridViewTextBoxColumn Column5;
-        private DataGridViewTextBoxColumn Column6;
-        private DataGridViewTextBoxColumn Column7;
-        private DataGridViewTextBoxColumn Column8;
-        private DataGridViewTextBoxColumn Column9;
         private Button buttonUpdate;
         private CheckBox checkBoxRole1;
         private PictureBox pictureBoxErrorEmail1;
@@ -1311,5 +1306,14 @@
         private Label label26;
         private Panel panel16;
         private PictureBox pictureBoxErrorCNIC1;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column5;
+        private DataGridViewTextBoxColumn Column6;
+        private DataGridViewTextBoxColumn Column7;
+        private DataGridViewTextBoxColumn Column8;
+        private DataGridViewTextBoxColumn Column9;
     }
 }

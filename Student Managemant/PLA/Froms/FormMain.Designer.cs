@@ -60,6 +60,7 @@
             userControlDashbord1 = new Student_Managemant.PLA.userControl.UserControlDashbord();
             userControlAddClass1 = new Student_Managemant.PLA.userControl.UserControlAddClass();
             userControlAddStudent1 = new UserControlAddStudent();
+            userControl1Register1 = new Student_Managemant.PLA.userControl.UserControl1Register();
             panel1.SuspendLayout();
             panel4.SuspendLayout();
             panel2.SuspendLayout();
@@ -105,6 +106,7 @@
             buttonRegister.TextAlign = ContentAlignment.MiddleLeft;
             buttonRegister.TextImageRelation = TextImageRelation.ImageBeforeText;
             buttonRegister.UseVisualStyleBackColor = true;
+            buttonRegister.Click += buttonRegister_Click_1;
             // 
             // buttonReport
             // 
@@ -457,12 +459,24 @@
             userControlAddStudent1.TabIndex = 1;
             userControlAddStudent1.Visible = false;
             // 
+            // userControl1Register1
+            // 
+            userControl1Register1.BackColor = Color.White;
+            userControl1Register1.Dock = DockStyle.Fill;
+            userControl1Register1.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            userControl1Register1.Location = new Point(258, 184);
+            userControl1Register1.Margin = new Padding(4);
+            userControl1Register1.Name = "userControl1Register1";
+            userControl1Register1.Size = new Size(926, 497);
+            userControl1Register1.TabIndex = 0;
+            // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1184, 681);
+            Controls.Add(userControl1Register1);
             Controls.Add(userControlAddStudent1);
             Controls.Add(userControlAddClass1);
             Controls.Add(userControlDashbord1);
@@ -526,5 +540,6 @@
         private userControl.UserControlDashbord userControlDashbord1;
         private userControl.UserControlAddClass userControlAddClass1;
         private UserControlAddStudent userControlAddStudent1;
+        private userControl.UserControl1Register userControl1Register1;
     }
 }
