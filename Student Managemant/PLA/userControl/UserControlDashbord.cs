@@ -22,37 +22,45 @@ namespace Student_Managemant.PLA.userControl
         public void Count()
         {
             string query = "SELECT COUNT(*) FROM Class_Table";
+            string query1 = "SELECT COUNT(*) FROM Student_Table";
 
-            try
+
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                connection.Open();
+                using (MySqlCommand command = new MySqlCommand(query, connection))
                 {
-                    connection.Open();
-                    using (MySqlCommand command = new MySqlCommand(query, connection))
-                    {
-                        // ExecuteScalar returns the value of the first column of the first row (the count)
-                        object result = command.ExecuteScalar();
+                    // ExecuteScalar returns the value of the first column of the first row (the count)
+                    object result = command.ExecuteScalar();
 
-                        if (result != null)
-                        {
-                            // Convert the count to a string and assign it to the label
-                            labelTotalClasses.Text = result.ToString();
-                        }
-                        else
-                        {
-                            labelTotalClasses.Text = "0";
-                        }
+                    if (result != null)
+                    {
+                        // Convert the count to a string and assign it to the label
+                        labelTotalClasses.Text = result.ToString();
+                    }
+                    else
+                    {
+                        labelTotalClasses.Text = "0";
                     }
                 }
+                using (MySqlCommand comandS = new MySqlCommand(query1, connection))
+                {
+
+                    object resultS = comandS.ExecuteScalar();
+                    if (resultS != null)
+                    {
+                        label2.Text = resultS.ToString();
+                    }
+                    else
+                    {
+                        label2.Text = "0";
+                    }
+                }
+
+
             }
-            catch (Exception ex)
-            {
-                // In a dashboard, you usually fail silently or log the error, 
-                // but we'll show a message for debugging.
-                MessageBox.Show("Error counting classes: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                labelTotalClasses.Text = "ERR";
-            }
-        }
+        }`
 
         private void label2_Click(object sender, EventArgs e)
         {
