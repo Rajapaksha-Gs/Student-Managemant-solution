@@ -76,6 +76,7 @@ namespace Student_Managemant.PLA.Froms
         private void buttonAttendance_Click(object sender, EventArgs e)
         {
             MoveSidePanel(buttonAttendance);
+            userControlAddClass1.ClearTxtBox();
             userControlAddClass1.Visible = false;
             userControlDashbord1.Visible = false;
 
