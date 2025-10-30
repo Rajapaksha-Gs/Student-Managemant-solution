@@ -60,9 +60,7 @@
             label7 = new Label();
             label6 = new Label();
             textBoxSearch = new TextBox();
-            tabPageUPClass = new TabPage();
-            buttonDelete = new Button();
-            buttonUpdate = new Button();
+            tabPageUPStudent = new TabPage();
             textBoxHwStudent1 = new TextBox();
             panel6 = new Panel();
             label10 = new Label();
@@ -75,13 +73,15 @@
             label11 = new Label();
             label12 = new Label();
             label13 = new Label();
+            buttonDelete = new Button();
+            buttonUpdate = new Button();
             label14 = new Label();
             tabControlAddClass.SuspendLayout();
             tabPageAddClass.SuspendLayout();
             tabPageSearchClass.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewClass).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxSerach).BeginInit();
-            tabPageUPClass.SuspendLayout();
+            tabPageUPStudent.SuspendLayout();
             SuspendLayout();
             // 
             // tabControlAddClass
@@ -89,7 +89,7 @@
             tabControlAddClass.Alignment = TabAlignment.Bottom;
             tabControlAddClass.Controls.Add(tabPageAddClass);
             tabControlAddClass.Controls.Add(tabPageSearchClass);
-            tabControlAddClass.Controls.Add(tabPageUPClass);
+            tabControlAddClass.Controls.Add(tabPageUPStudent);
             tabControlAddClass.Dock = DockStyle.Fill;
             tabControlAddClass.Location = new Point(0, 0);
             tabControlAddClass.Name = "tabControlAddClass";
@@ -411,34 +411,138 @@
             textBoxSearch.Location = new Point(154, 79);
             textBoxSearch.Name = "textBoxSearch";
             textBoxSearch.Size = new Size(270, 20);
-            textBoxSearch.TabIndex = 0;
+            textBoxSearch.TabIndex = 1;
             textBoxSearch.TextChanged += textBoxSearch_TextChanged;
             // 
-            // tabPageUPClass
+            // tabPageUPStudent
             // 
-            tabPageUPClass.Controls.Add(buttonDelete);
-            tabPageUPClass.Controls.Add(buttonUpdate);
-            tabPageUPClass.Controls.Add(textBoxHwStudent1);
-            tabPageUPClass.Controls.Add(panel6);
-            tabPageUPClass.Controls.Add(label10);
-            tabPageUPClass.Controls.Add(textBoxFemale1);
-            tabPageUPClass.Controls.Add(textBoxMale1);
-            tabPageUPClass.Controls.Add(textBoxName1);
-            tabPageUPClass.Controls.Add(panel7);
-            tabPageUPClass.Controls.Add(panel8);
-            tabPageUPClass.Controls.Add(panel9);
-            tabPageUPClass.Controls.Add(label11);
-            tabPageUPClass.Controls.Add(label12);
-            tabPageUPClass.Controls.Add(label13);
-            tabPageUPClass.Controls.Add(label14);
-            tabPageUPClass.Location = new Point(4, 4);
-            tabPageUPClass.Name = "tabPageUPClass";
-            tabPageUPClass.Padding = new Padding(3);
-            tabPageUPClass.Size = new Size(934, 467);
-            tabPageUPClass.TabIndex = 2;
-            tabPageUPClass.Text = "Update and Delete Class";
-            tabPageUPClass.UseVisualStyleBackColor = true;
-            tabPageUPClass.Leave += tabPageUPClass_Leave;
+            tabPageUPStudent.Controls.Add(textBoxHwStudent1);
+            tabPageUPStudent.Controls.Add(panel6);
+            tabPageUPStudent.Controls.Add(label10);
+            tabPageUPStudent.Controls.Add(textBoxFemale1);
+            tabPageUPStudent.Controls.Add(textBoxMale1);
+            tabPageUPStudent.Controls.Add(textBoxName1);
+            tabPageUPStudent.Controls.Add(panel7);
+            tabPageUPStudent.Controls.Add(panel8);
+            tabPageUPStudent.Controls.Add(panel9);
+            tabPageUPStudent.Controls.Add(label11);
+            tabPageUPStudent.Controls.Add(label12);
+            tabPageUPStudent.Controls.Add(label13);
+            tabPageUPStudent.Controls.Add(buttonDelete);
+            tabPageUPStudent.Controls.Add(buttonUpdate);
+            tabPageUPStudent.Controls.Add(label14);
+            tabPageUPStudent.Location = new Point(4, 4);
+            tabPageUPStudent.Name = "tabPageUPStudent";
+            tabPageUPStudent.Padding = new Padding(3);
+            tabPageUPStudent.Size = new Size(934, 473);
+            tabPageUPStudent.TabIndex = 2;
+            tabPageUPStudent.Text = "Update and Delete Student";
+            tabPageUPStudent.UseVisualStyleBackColor = true;
+            tabPageUPStudent.Leave += tabPageUPClass_Leave;
+            // 
+            // textBoxHwStudent1
+            // 
+            textBoxHwStudent1.BorderStyle = BorderStyle.None;
+            textBoxHwStudent1.Location = new Point(553, 138);
+            textBoxHwStudent1.Name = "textBoxHwStudent1";
+            textBoxHwStudent1.Size = new Size(267, 20);
+            textBoxHwStudent1.TabIndex = 13;
+            // 
+            // panel6
+            // 
+            panel6.BackColor = Color.LightGray;
+            panel6.Location = new Point(553, 155);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(270, 2);
+            panel6.TabIndex = 14;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold);
+            label10.Location = new Point(553, 101);
+            label10.Name = "label10";
+            label10.Size = new Size(134, 16);
+            label10.TabIndex = 15;
+            label10.Text = "How Many Student?";
+            // 
+            // textBoxFemale1
+            // 
+            textBoxFemale1.BorderStyle = BorderStyle.None;
+            textBoxFemale1.Location = new Point(556, 198);
+            textBoxFemale1.Name = "textBoxFemale1";
+            textBoxFemale1.Size = new Size(267, 20);
+            textBoxFemale1.TabIndex = 16;
+            // 
+            // textBoxMale1
+            // 
+            textBoxMale1.BorderStyle = BorderStyle.None;
+            textBoxMale1.Location = new Point(115, 198);
+            textBoxMale1.Name = "textBoxMale1";
+            textBoxMale1.Size = new Size(267, 20);
+            textBoxMale1.TabIndex = 17;
+            // 
+            // textBoxName1
+            // 
+            textBoxName1.BorderStyle = BorderStyle.None;
+            textBoxName1.Location = new Point(112, 138);
+            textBoxName1.Name = "textBoxName1";
+            textBoxName1.Size = new Size(267, 20);
+            textBoxName1.TabIndex = 11;
+            // 
+            // panel7
+            // 
+            panel7.BackColor = Color.LightGray;
+            panel7.Location = new Point(553, 222);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(270, 2);
+            panel7.TabIndex = 24;
+            // 
+            // panel8
+            // 
+            panel8.BackColor = Color.LightGray;
+            panel8.Location = new Point(112, 222);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(270, 2);
+            panel8.TabIndex = 19;
+            // 
+            // panel9
+            // 
+            panel9.BackColor = Color.LightGray;
+            panel9.Location = new Point(112, 160);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(270, 2);
+            panel9.TabIndex = 20;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold);
+            label11.Location = new Point(553, 169);
+            label11.Name = "label11";
+            label11.Size = new Size(58, 16);
+            label11.TabIndex = 21;
+            label11.Text = "FeMale:";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold);
+            label12.Location = new Point(112, 169);
+            label12.Name = "label12";
+            label12.Size = new Size(44, 16);
+            label12.TabIndex = 22;
+            label12.Text = "Male:";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold);
+            label13.Location = new Point(112, 101);
+            label13.Name = "label13";
+            label13.Size = new Size(50, 16);
+            label13.TabIndex = 0;
+            label13.Text = "Name:";
             // 
             // buttonDelete
             // 
@@ -449,7 +553,7 @@
             buttonDelete.FlatStyle = FlatStyle.Flat;
             buttonDelete.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             buttonDelete.ForeColor = Color.White;
-            buttonDelete.Location = new Point(262, 285);
+            buttonDelete.Location = new Point(262, 264);
             buttonDelete.Name = "buttonDelete";
             buttonDelete.Size = new Size(114, 31);
             buttonDelete.TabIndex = 0;
@@ -466,124 +570,13 @@
             buttonUpdate.FlatStyle = FlatStyle.Flat;
             buttonUpdate.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             buttonUpdate.ForeColor = Color.White;
-            buttonUpdate.Location = new Point(112, 285);
+            buttonUpdate.Location = new Point(112, 264);
             buttonUpdate.Name = "buttonUpdate";
             buttonUpdate.Size = new Size(114, 31);
             buttonUpdate.TabIndex = 0;
             buttonUpdate.Text = "Update";
             buttonUpdate.UseVisualStyleBackColor = false;
             buttonUpdate.Click += buttonUpdate_Click;
-            // 
-            // textBoxHwStudent1
-            // 
-            textBoxHwStudent1.BorderStyle = BorderStyle.None;
-            textBoxHwStudent1.Location = new Point(550, 159);
-            textBoxHwStudent1.Name = "textBoxHwStudent1";
-            textBoxHwStudent1.Size = new Size(267, 20);
-            textBoxHwStudent1.TabIndex = 0;
-            textBoxHwStudent1.KeyPress += textBoxHwStudent1_KeyPress;
-            // 
-            // panel6
-            // 
-            panel6.BackColor = Color.LightGray;
-            panel6.Location = new Point(550, 176);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(270, 2);
-            panel6.TabIndex = 0;
-            // 
-            // label10
-            // 
-            label10.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label10.AutoSize = true;
-            label10.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold);
-            label10.Location = new Point(550, 122);
-            label10.Name = "label10";
-            label10.Size = new Size(134, 16);
-            label10.TabIndex = 0;
-            label10.Text = "How Many Student?";
-            // 
-            // textBoxFemale1
-            // 
-            textBoxFemale1.BorderStyle = BorderStyle.None;
-            textBoxFemale1.Location = new Point(553, 219);
-            textBoxFemale1.Name = "textBoxFemale1";
-            textBoxFemale1.Size = new Size(267, 20);
-            textBoxFemale1.TabIndex = 0;
-            textBoxFemale1.KeyPress += textBoxFemale1_KeyPress;
-            // 
-            // textBoxMale1
-            // 
-            textBoxMale1.BorderStyle = BorderStyle.None;
-            textBoxMale1.Location = new Point(112, 219);
-            textBoxMale1.Name = "textBoxMale1";
-            textBoxMale1.Size = new Size(267, 20);
-            textBoxMale1.TabIndex = 0;
-            textBoxMale1.KeyPress += textBoxMale1_KeyPress;
-            // 
-            // textBoxName1
-            // 
-            textBoxName1.BorderStyle = BorderStyle.None;
-            textBoxName1.Location = new Point(109, 159);
-            textBoxName1.Name = "textBoxName1";
-            textBoxName1.Size = new Size(267, 20);
-            textBoxName1.TabIndex = 11;
-            // 
-            // panel7
-            // 
-            panel7.BackColor = Color.LightGray;
-            panel7.Location = new Point(550, 243);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(270, 2);
-            panel7.TabIndex = 0;
-            // 
-            // panel8
-            // 
-            panel8.BackColor = Color.LightGray;
-            panel8.Location = new Point(109, 243);
-            panel8.Name = "panel8";
-            panel8.Size = new Size(270, 2);
-            panel8.TabIndex = 0;
-            // 
-            // panel9
-            // 
-            panel9.BackColor = Color.LightGray;
-            panel9.Location = new Point(109, 181);
-            panel9.Name = "panel9";
-            panel9.Size = new Size(270, 2);
-            panel9.TabIndex = 0;
-            // 
-            // label11
-            // 
-            label11.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label11.AutoSize = true;
-            label11.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold);
-            label11.Location = new Point(550, 190);
-            label11.Name = "label11";
-            label11.Size = new Size(58, 16);
-            label11.TabIndex = 0;
-            label11.Text = "FeMale:";
-            // 
-            // label12
-            // 
-            label12.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label12.AutoSize = true;
-            label12.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold);
-            label12.Location = new Point(109, 190);
-            label12.Name = "label12";
-            label12.Size = new Size(44, 16);
-            label12.TabIndex = 2;
-            label12.Text = "Male:";
-            // 
-            // label13
-            // 
-            label13.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label13.AutoSize = true;
-            label13.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold);
-            label13.Location = new Point(109, 122);
-            label13.Name = "label13";
-            label13.Size = new Size(50, 16);
-            label13.TabIndex = 0;
-            label13.Text = "Name:";
             // 
             // label14
             // 
@@ -593,9 +586,9 @@
             label14.ForeColor = Color.FromArgb(52, 178, 151);
             label14.Location = new Point(3, 3);
             label14.Name = "label14";
-            label14.Size = new Size(156, 19);
+            label14.Size = new Size(217, 19);
             label14.TabIndex = 0;
-            label14.Text = "Update And Delete";
+            label14.Text = "Update And Delete Student";
             // 
             // UserControlAddClass
             // 
@@ -615,8 +608,8 @@
             tabPageSearchClass.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewClass).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxSerach).EndInit();
-            tabPageUPClass.ResumeLayout(false);
-            tabPageUPClass.PerformLayout();
+            tabPageUPStudent.ResumeLayout(false);
+            tabPageUPStudent.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -648,8 +641,15 @@
         private PictureBox pictureBoxSerach;
         private Label labelCountClass;
         private Label label8;
-        private TabPage tabPageUPClass;
+        private TabPage tabPageUPStudent;
         private Button buttonUpdate;
+        private Label label14;
+        private Button buttonDelete;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column5;
         private TextBox textBoxHwStudent1;
         private Panel panel6;
         private Label label10;
@@ -662,12 +662,5 @@
         private Label label11;
         private Label label12;
         private Label label13;
-        private Label label14;
-        private Button buttonDelete;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
-        private DataGridViewTextBoxColumn Column5;
     }
 }
