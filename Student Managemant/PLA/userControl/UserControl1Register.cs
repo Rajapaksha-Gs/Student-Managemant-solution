@@ -768,6 +768,215 @@ namespace Student_Managemant.PLA.userControl
 
             }
         }
+
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(ID))
+            {
+                MessageBox.Show("Please select a user from the Search tab before attempting to update.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // --- 2. Validation and Data Collection ---
+            HideEroorPic1(); // Assuming this hides all error picture boxes for the 'Update' tab
+            bool validationPassed = true;
+
+            // Collect data from the 'Update and Delete User' controls (using suffix '1')
+            string name = textBox4.Text.Trim();
+            string email = textBoxEmail1.Text.Trim();
+            string phone = maskedTextBoxPho1.Text.Replace(" ", "").Trim(); // Remove spaces
+            string cnic = maskedTextBoxCNIC1.Text.Trim();
+            string dobText = maskedTextBoxDOB1.Text.Trim();
+            string address = textBoxAdd1.Text.Trim(); // Assuming an address textbox exists
+
+            // Determine Role
+            string role = checkBoxRole1.Checked ? "Admin" : "User";
+
+            // Determine Gender
+            string gender = "";
+            if (radioButtonMale1.Checked)
+            {
+                gender = "Male";
+            }
+            else if (radioButtonFemale1.Checked)
+            {
+                gender = "Female";
+            }
+
+            // NOTE: You should ideally NOT allow CNIC/Email updates without strong validation
+            // to prevent accidental duplicates, but for simplicity, we focus on required fields.
+
+            // A. Check required fields
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                MessageBox.Show("Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBox4.Focus();
+                validationPassed = false;
+            }
+            else if (string.IsNullOrWhiteSpace(gender))
+            {
+                MessageBox.Show("Gender selection is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                validationPassed = false;
+            }
+
+            // B. Check Email
+            if (validationPassed && (!IsValidEmail(email) || email == "Gayan@gmail.com"))
+            {
+                pictureBoxErrorEmail1.Visible = true;
+                MessageBox.Show("Invalid Email format.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBoxEmail1.Focus();
+                validationPassed = false;
+            }
+
+            // C. Check CNIC completion
+            if (validationPassed && !maskedTextBoxCNIC1.MaskCompleted)
+            {
+                pictureBoxErrorCNIC1.Visible = true;
+                MessageBox.Show("CNIC field is incomplete.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                maskedTextBoxCNIC1.Focus();
+                validationPassed = false;
+            }
+
+            // D. Check DOB validity
+            if (validationPassed)
+            {
+                DateTime dob;
+                if (!IsValidaDate(dobText) || !DateTime.TryParse(dobText, out dob) || dob > DateTime.Now)
+                {
+                    pictureBoxErrorDOB1.Visible = true;
+                    MessageBox.Show("Invalid Date of Birth format or date is in the future.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    maskedTextBoxDOB1.Focus();
+                    validationPassed = false;
+                }
+            }
+
+            // --- 3. Database Update ---
+            if (validationPassed)
+            {
+                // UPDATE query uses the primary key (ID) for identification
+                string query = "UPDATE User_Table SET " +
+                               "User_Name = @Name, " +
+                               "User_Email = @Email, " +
+                               "User_Pho = @Phone, " +
+                               "User_CNIC = @CNIC, " +
+                               "User_DOB = @DOB, " +
+                               "User_Gender = @Gender, " +
+                               "User_Role = @Role, " +
+                               "User_Add = @Address " +
+                               "WHERE User_ID = @ID"; // Assuming your primary key is User_ID
+
+                try
+                {
+                    using (MySqlConnection connection = new MySqlConnection(connectionString))
+                    {
+                        connection.Open();
+                        using (MySqlCommand command = new MySqlCommand(query, connection))
+                        {
+                            // Add parameters
+                            command.Parameters.AddWithValue("@Name", name);
+                            command.Parameters.AddWithValue("@Email", email);
+                            command.Parameters.AddWithValue("@Phone", phone);
+                            command.Parameters.AddWithValue("@CNIC", cnic);
+                            command.Parameters.AddWithValue("@DOB", dobText);
+                            command.Parameters.AddWithValue("@Gender", gender);
+                            command.Parameters.AddWithValue("@Role", role);
+                            command.Parameters.AddWithValue("@Address", address);
+                            command.Parameters.AddWithValue("@ID", ID); // CRITICAL: Identify the row to update
+
+                            int rowsAffected = command.ExecuteNonQuery();
+
+                            if (rowsAffected > 0)
+                            {
+                                MessageBox.Show("User details updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                ClearTextBox1(); // Clear the update form after success
+                                                 // You should also navigate back to the Search tab or refresh the DataGridView here
+                            }
+                            else
+                            {
+                                MessageBox.Show("Update failed. User ID may not exist or data was unchanged.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("Database Error during update: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An unexpected error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            // 1. Check if a user ID is loaded for deletion
+            if (string.IsNullOrEmpty(ID))
+            {
+                MessageBox.Show("Please select a user from the Search tab before attempting to delete.", "Selection Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 2. Confirmation Prompt (CRITICAL step for irreversible action)
+            DialogResult confirm = MessageBox.Show($"Are you sure you want to permanently delete the user with ID **{ID}**?",
+                                                   "Confirm Deletion",
+                                                   MessageBoxButtons.YesNo,
+                                                   MessageBoxIcon.Question);
+
+            if (confirm == DialogResult.No)
+            {
+                return; // User cancelled the operation
+            }
+
+            // --- 3. Database Deletion ---
+
+            // Delete query uses the primary key (ID) for identification
+            string query = "DELETE FROM User_Table WHERE User_ID = @ID"; // Assuming your primary key is User_ID
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        // CRITICAL: Identify the row to delete using the ID parameter
+                        command.Parameters.AddWithValue("@ID", ID);
+
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("User was successfully deleted!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            ClearTextBox1(); // Clear the update/delete form after success
+                            ID = ""; // Reset the ID to prevent accidental re-deletion
+                                     // You should also refresh the DataGridView on the Search tab here
+                        }
+                        else
+                        {
+                            MessageBox.Show("Deletion failed. User ID was not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                // Handle Foreign Key Constraint Violation (Error code 1451 in MySQL)
+                if (ex.Number == 1451)
+                {
+                    MessageBox.Show("Cannot delete user: Dependent records (e.g., attendance data) exist. Remove those first.", "Deletion Blocked", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Database Error during deletion: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An unexpected error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
 

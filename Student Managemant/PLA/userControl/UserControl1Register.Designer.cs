@@ -846,6 +846,7 @@
             buttonUpdate.TabIndex = 12;
             buttonUpdate.Text = "Update";
             buttonUpdate.UseVisualStyleBackColor = false;
+            buttonUpdate.Click += buttonUpdate_Click;
             // 
             // checkBoxRole1
             // 
@@ -1170,6 +1171,7 @@
             buttonDelete.TabIndex = 13;
             buttonDelete.Text = "Delete";
             buttonDelete.UseVisualStyleBackColor = false;
+            buttonDelete.Click += buttonDelete_Click;
             // 
             // label14
             // 
