@@ -352,23 +352,9 @@ namespace Student_Managemant.PLA.Froms
                 // --- 1. Load Data from DataGridView Row to Controls ---
                 // Assuming column order: ID(0), Name(1), RegNo(2), Class_Name(3), Gender(4)
 
-                // Store Student ID for later Update/Delete operations
-                SID = row.Cells[0].Value.ToString();
-
-                // Populate text boxes
-                textBoxName1.Text = row.Cells[1].Value.ToString();
-                textBoxRegNo1.Text = row.Cells[2].Value.ToString();
-
-                // Store the student's current class name for selection after loading all classes
-                string studentClassName = row.Cells[3].Value.ToString();
-
-                // --- 2. Load Class ComboBox (In-Method MySQL Logic) ---
                 comboBoxClass1.Items.Clear();
 
                 string query = "SELECT Class_Name FROM Class_Table ORDER BY Class_Name ASC";
-
-                try
-                {
                     using (MySqlConnection connection = new MySqlConnection(connectionString))
                     {
                         connection.Open();

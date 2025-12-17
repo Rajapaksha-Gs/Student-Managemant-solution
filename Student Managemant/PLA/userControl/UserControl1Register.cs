@@ -40,7 +40,6 @@ namespace Student_Managemant.PLA.userControl
         {
             pictureBoxErrorCINC.Visible = false;
             pictureBoxErrorEmail.Visible = false;
-            pictureBoxErrorCINC.Visible = false;
             pictureBoxErrorDOB.Visible = false;
 
         }
@@ -193,8 +192,6 @@ namespace Student_Managemant.PLA.userControl
                 pictureBoxErrorPho.ForeColor = Color.Black;
                 Mask(maskedTextBoxPho);
             }
-
-
             else
                 pictureBoxErrorPho1.Visible = false;
         }
@@ -206,10 +203,6 @@ namespace Student_Managemant.PLA.userControl
 
             maskedTextBoxPho.Text = "000 00 00 000";
             maskedTextBoxPho.ForeColor = Color.DarkGray;
-            if (!maskedTextBoxPho.MaskCompleted)
-                maskedTextBoxPho.ForeColor = Color.DarkGray;
-
-            if (!maskedTextBoxPho.MaskCompleted || maskedTextBoxPho.Text == "+000 00 00 000")
                 pictureBoxErrorPho.Visible = true;
             else
                 pictureBoxErrorPho.Visible = false;
@@ -322,8 +315,6 @@ namespace Student_Managemant.PLA.userControl
                 pictureBoxErrorPho1.ForeColor = Color.Black;
                 Mask(maskedTextBoxPho);
             }
-
-
             else
                 pictureBoxErrorPho.Visible = false;
         }
@@ -335,10 +326,6 @@ namespace Student_Managemant.PLA.userControl
 
             maskedTextBoxPho1.Text = "000 00 00 000";
             maskedTextBoxPho1.ForeColor = Color.DarkGray;
-            if (!maskedTextBoxPho1.MaskCompleted)
-                maskedTextBoxPho1.ForeColor = Color.DarkGray;
-
-            if (!maskedTextBoxPho1.MaskCompleted || maskedTextBoxPho1.Text == "+000 00 00 000")
                 pictureBoxErrorPho1.Visible = true;
             else
                 pictureBoxErrorPho1.Visible = false;

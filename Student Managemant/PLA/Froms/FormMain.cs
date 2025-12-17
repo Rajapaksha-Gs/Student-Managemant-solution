@@ -135,7 +135,6 @@ namespace Student_Managemant.PLA.Froms
                 panelExpand.Visible = true;
         }
 
-        private void buttonRegister_Click_1(object sender, EventArgs e)
         {
 
         }
