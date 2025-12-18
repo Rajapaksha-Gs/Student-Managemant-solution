@@ -52,6 +52,11 @@
             labelCountStudent = new Label();
             label15 = new Label();
             dataGridViewStudent = new DataGridView();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
+            Column5 = new DataGridViewTextBoxColumn();
             pictureBoxSerach = new PictureBox();
             panel5 = new Panel();
             labelCountClass = new Label();
@@ -76,11 +81,6 @@
             buttonUpdate = new Button();
             label14 = new Label();
             toolTip = new ToolTip(components);
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
-            Column5 = new DataGridViewTextBoxColumn();
             tabControlAddStudent.SuspendLayout();
             tabPageAddStudent.SuspendLayout();
             tabPageSearchStudent.SuspendLayout();
@@ -101,6 +101,7 @@
             tabControlAddStudent.SelectedIndex = 0;
             tabControlAddStudent.Size = new Size(942, 501);
             tabControlAddStudent.TabIndex = 0;
+            tabControlAddStudent.Enter += tabControlAddStudent_Enter;
             // 
             // tabPageAddStudent
             // 
@@ -127,6 +128,8 @@
             tabPageAddStudent.Size = new Size(934, 471);
             tabPageAddStudent.TabIndex = 0;
             tabPageAddStudent.Text = "Add Student";
+            tabPageAddStudent.Enter += tabPageAddStudent_Enter;
+            tabPageAddStudent.Leave += tabPageAddStudent_Leave;
             // 
             // radioButtonFemale
             // 
@@ -157,7 +160,7 @@
             comboBoxClass.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxClass.FlatStyle = FlatStyle.Flat;
             comboBoxClass.FormattingEnabled = true;
-            comboBoxClass.Location = new Point(123, 242);
+            comboBoxClass.Location = new Point(122, 242);
             comboBoxClass.Name = "comboBoxClass";
             comboBoxClass.Size = new Size(267, 25);
             comboBoxClass.TabIndex = 0;
@@ -370,6 +373,43 @@
             dataGridViewStudent.Size = new Size(906, 318);
             dataGridViewStudent.TabIndex = 0;
             dataGridViewStudent.CellClick += dataGridViewStudent_CellClick;
+            dataGridViewStudent.CellContentClick += dataGridViewStudent_CellContentClick;
+            // 
+            // Column1
+            // 
+            Column1.DataPropertyName = "Student_ID";
+            Column1.HeaderText = "ID";
+            Column1.Name = "Column1";
+            Column1.ReadOnly = true;
+            Column1.Visible = false;
+            // 
+            // Column2
+            // 
+            Column2.DataPropertyName = "Student_Name";
+            Column2.HeaderText = "Name";
+            Column2.Name = "Column2";
+            Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            Column3.DataPropertyName = "Student_RegNo";
+            Column3.HeaderText = "Reg No.";
+            Column3.Name = "Column3";
+            Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            Column4.DataPropertyName = "Class_Name";
+            Column4.HeaderText = "Class";
+            Column4.Name = "Column4";
+            Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            Column5.DataPropertyName = "Student_Gender";
+            Column5.HeaderText = "Gender";
+            Column5.Name = "Column5";
+            Column5.ReadOnly = true;
             // 
             // pictureBoxSerach
             // 
@@ -464,8 +504,9 @@
             tabPageUPStudent.Padding = new Padding(3);
             tabPageUPStudent.Size = new Size(934, 471);
             tabPageUPStudent.TabIndex = 2;
-            tabPageUPStudent.Text = "Update and Delete Class";
+            tabPageUPStudent.Text = "Update and Delete Student";
             tabPageUPStudent.UseVisualStyleBackColor = true;
+            tabPageUPStudent.Click += tabPageUPStudent_Click;
             tabPageUPStudent.Leave += tabPageUPStudent_Leave;
             // 
             // radioButtonFemale1
@@ -597,6 +638,7 @@
             buttonDelete.TabIndex = 7;
             buttonDelete.Text = "Delete";
             buttonDelete.UseVisualStyleBackColor = false;
+            buttonDelete.Click += buttonDelete_Click_1;
             // 
             // buttonUpdate
             // 
@@ -625,42 +667,6 @@
             label14.Size = new Size(217, 19);
             label14.TabIndex = 0;
             label14.Text = "Update And Delete Student";
-            // 
-            // Column1
-            // 
-            Column1.DataPropertyName = "Student_ID";
-            Column1.HeaderText = "ID";
-            Column1.Name = "Column1";
-            Column1.ReadOnly = true;
-            Column1.Visible = false;
-            // 
-            // Column2
-            // 
-            Column2.DataPropertyName = "Student_Name";
-            Column2.HeaderText = "Name";
-            Column2.Name = "Column2";
-            Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            Column3.DataPropertyName = "Student_Total";
-            Column3.HeaderText = "Reg No.";
-            Column3.Name = "Column3";
-            Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            Column4.DataPropertyName = "Student_Male";
-            Column4.HeaderText = "Class";
-            Column4.Name = "Column4";
-            Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            Column5.DataPropertyName = "Student_Gender";
-            Column5.HeaderText = "Gender";
-            Column5.Name = "Column5";
-            Column5.ReadOnly = true;
             // 
             // UserControlAddStudent
             // 
@@ -729,13 +735,13 @@
         private Label label11;
         private Label label12;
         private ToolTip toolTip;
+        private ComboBox comboBoxSearchBy;
+        private Panel panel10;
+        private Label label13;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column5;
-        private ComboBox comboBoxSearchBy;
-        private Panel panel10;
-        private Label label13;
     }
 }

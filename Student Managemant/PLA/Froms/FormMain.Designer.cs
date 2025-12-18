@@ -58,9 +58,11 @@
             labelTime = new Label();
             timerDateAndTime = new System.Windows.Forms.Timer(components);
             userControlDashbord1 = new Student_Managemant.PLA.userControl.UserControlDashbord();
-            userControlAddClass1 = new Student_Managemant.PLA.userControl.UserControlAddClass();
+            userControlAttendance1 = new Student_Managemant.PLA.userControl.UserControlAttendance();
             userControlAddStudent1 = new UserControlAddStudent();
+            userControlAddClass1 = new Student_Managemant.PLA.userControl.UserControlAddClass();
             userControl1Register1 = new Student_Managemant.PLA.userControl.UserControl1Register();
+            userControlReport1 = new Student_Managemant.PLA.userControl.UserControlReport();
             panel1.SuspendLayout();
             panel4.SuspendLayout();
             panel2.SuspendLayout();
@@ -106,7 +108,7 @@
             buttonRegister.TextAlign = ContentAlignment.MiddleLeft;
             buttonRegister.TextImageRelation = TextImageRelation.ImageBeforeText;
             buttonRegister.UseVisualStyleBackColor = true;
-            buttonRegister.Click += buttonRegister_Click_1;
+            buttonRegister.Click += buttonRegister_Click;
             // 
             // buttonReport
             // 
@@ -435,6 +437,29 @@
             userControlDashbord1.Size = new Size(926, 497);
             userControlDashbord1.TabIndex = 0;
             // 
+            // userControlAttendance1
+            // 
+            userControlAttendance1.BackColor = Color.White;
+            userControlAttendance1.Dock = DockStyle.Fill;
+            userControlAttendance1.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            userControlAttendance1.Location = new Point(258, 184);
+            userControlAttendance1.Margin = new Padding(4);
+            userControlAttendance1.Name = "userControlAttendance1";
+            userControlAttendance1.Size = new Size(926, 497);
+            userControlAttendance1.TabIndex = 0;
+            userControlAttendance1.Visible = false;
+            // 
+            // userControlAddStudent1
+            // 
+            userControlAddStudent1.BackColor = Color.White;
+            userControlAddStudent1.Dock = DockStyle.Fill;
+            userControlAddStudent1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            userControlAddStudent1.Location = new Point(258, 184);
+            userControlAddStudent1.Name = "userControlAddStudent1";
+            userControlAddStudent1.Size = new Size(926, 497);
+            userControlAddStudent1.TabIndex = 0;
+            userControlAddStudent1.Visible = false;
+            // 
             // userControlAddClass1
             // 
             userControlAddClass1.BackColor = Color.White;
@@ -448,17 +473,6 @@
             userControlAddClass1.Tag = "iuytr";
             userControlAddClass1.Visible = false;
             // 
-            // userControlAddStudent1
-            // 
-            userControlAddStudent1.BackColor = Color.White;
-            userControlAddStudent1.Dock = DockStyle.Fill;
-            userControlAddStudent1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            userControlAddStudent1.Location = new Point(258, 184);
-            userControlAddStudent1.Name = "userControlAddStudent1";
-            userControlAddStudent1.Size = new Size(926, 497);
-            userControlAddStudent1.TabIndex = 1;
-            userControlAddStudent1.Visible = false;
-            // 
             // userControl1Register1
             // 
             userControl1Register1.BackColor = Color.White;
@@ -469,6 +483,19 @@
             userControl1Register1.Name = "userControl1Register1";
             userControl1Register1.Size = new Size(926, 497);
             userControl1Register1.TabIndex = 0;
+            userControl1Register1.Visible = false;
+            // 
+            // userControlReport1
+            // 
+            userControlReport1.BackColor = Color.White;
+            userControlReport1.Dock = DockStyle.Fill;
+            userControlReport1.Font = new Font("Century Gothic", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            userControlReport1.Location = new Point(258, 184);
+            userControlReport1.Margin = new Padding(3, 4, 3, 4);
+            userControlReport1.Name = "userControlReport1";
+            userControlReport1.Size = new Size(926, 497);
+            userControlReport1.TabIndex = 0;
+            userControlReport1.Visible = false;
             // 
             // FormMain
             // 
@@ -476,9 +503,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1184, 681);
+            Controls.Add(userControlReport1);
             Controls.Add(userControl1Register1);
-            Controls.Add(userControlAddStudent1);
             Controls.Add(userControlAddClass1);
+            Controls.Add(userControlAddStudent1);
+            Controls.Add(userControlAttendance1);
             Controls.Add(userControlDashbord1);
             Controls.Add(panelBack);
             Controls.Add(panel1);
@@ -537,9 +566,11 @@
         private Button buttonReport;
         private Button buttonLogOut;
         private System.Windows.Forms.Timer timerDateAndTime;
+        private userControl.UserControlAttendance userControlAttendance1;
         private userControl.UserControlDashbord userControlDashbord1;
-        private userControl.UserControlAddClass userControlAddClass1;
         private UserControlAddStudent userControlAddStudent1;
+        private userControl.UserControlAddClass userControlAddClass1;
         private userControl.UserControl1Register userControl1Register1;
+        private userControl.UserControlReport userControlReport1;
     }
 }

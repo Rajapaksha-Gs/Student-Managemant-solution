@@ -16,7 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="DinkToPdf" Version="1.0.8" />
     <PackageReference Include="MySql.Data" Version="9.5.0" />
+    <PackageReference Include="Stitch-Reports" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>

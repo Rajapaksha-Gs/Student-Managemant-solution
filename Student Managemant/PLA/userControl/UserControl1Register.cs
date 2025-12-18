@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
@@ -14,7 +15,7 @@ namespace Student_Managemant.PLA.userControl
 {
     public partial class UserControl1Register : UserControl
     {
-        private string connectionString = "Server=localhost; Database=attendens_managment_system; Uid=root; Pwd=;";
+        private string connectionString = "Server=localhost; Database=attendens_managment_system; Uid=root; Pwd=;Convert Zero Datetime=True;";
         public string UID = "";
         private string gender = "", Role, ID = "";
         public UserControl1Register()
@@ -38,6 +39,7 @@ namespace Student_Managemant.PLA.userControl
         }
         private void HideEroorPic()
         {
+            pictureBoxErrorPho.Visible = false;
             pictureBoxErrorCINC.Visible = false;
             pictureBoxErrorEmail.Visible = false;
             pictureBoxErrorDOB.Visible = false;
@@ -55,8 +57,7 @@ namespace Student_Managemant.PLA.userControl
         public void ClearTextBox()
         {
             textBoxName.Clear();
-
-
+            textBoxPassword.Clear();
             textBoxEmail.Clear();
             maskedTextBoxPho.Text = "000 00 00 000";
             maskedTextBoxPho.ForeColor = Color.DarkGray;
@@ -136,19 +137,14 @@ namespace Student_Managemant.PLA.userControl
             }
             return true;
         }
-        private bool IsValidaDate(string date)
+        private bool TryParseDate(string input, out DateTime value)
         {
-            DateTime d;
-            bool ChValidity;
-            try
-            {
-                ChValidity = DateTime.TryParse(date, out d);
-                return ChValidity;
-            }
-            catch
-            {
-                return false;
-            }
+            return DateTime.TryParseExact(
+                input,
+                "dd/MM/yyyy",
+                CultureInfo.InvariantCulture,
+                DateTimeStyles.None,
+                out value);
         }
 
         private void pictureBoxSUser_MouseHover(object sender, EventArgs e)
@@ -193,19 +189,26 @@ namespace Student_Managemant.PLA.userControl
                 Mask(maskedTextBoxPho);
             }
             else
-                pictureBoxErrorPho1.Visible = false;
+            {
+                pictureBoxErrorPho.Visible = false;
+            }
         }
 
         private void maskedTextBoxPho_Leave(object sender, EventArgs e)
         {
-
-
-
-            maskedTextBoxPho.Text = "000 00 00 000";
-            maskedTextBoxPho.ForeColor = Color.DarkGray;
+            // Only reset to default if mask is incomplete or it's the default value
+            if (!maskedTextBoxPho.MaskCompleted || maskedTextBoxPho.Text == "+000 00 00 000")
+            {
+                maskedTextBoxPho.Text = "000 00 00 000";
+                maskedTextBoxPho.ForeColor = Color.DarkGray;
                 pictureBoxErrorPho.Visible = true;
+            }
             else
+            {
+                // Keep the entered value if mask is complete
+                maskedTextBoxPho.ForeColor = Color.Black;
                 pictureBoxErrorPho.Visible = false;
+            }
         }
 
         private void maskedTextBoxCNIC_Enter(object sender, EventArgs e)
@@ -272,7 +275,8 @@ namespace Student_Managemant.PLA.userControl
                 maskedTextBoxDOB.ForeColor = Color.DarkGray;
 
             }
-            if (!IsValidaDate(maskedTextBoxDOB.Text) || maskedTextBoxDOB.Text == "00/00/000" || DateTime.Parse(maskedTextBoxDOB.Text) > DateTime.Now)
+            if (!TryParseDate(maskedTextBoxDOB.Text, out DateTime dob) ||
+                dob > DateTime.Now)
                 pictureBoxErrorDOB.Visible = true;
             else
                 pictureBoxErrorDOB.Visible = false;
@@ -313,22 +317,29 @@ namespace Student_Managemant.PLA.userControl
             if (!maskedTextBoxPho1.MaskCompleted)
             {
                 pictureBoxErrorPho1.ForeColor = Color.Black;
-                Mask(maskedTextBoxPho);
+                Mask(maskedTextBoxPho1);
             }
             else
-                pictureBoxErrorPho.Visible = false;
+            {
+                pictureBoxErrorPho1.Visible = false;
+            }
         }
 
         private void maskedTextBoxPho1_Leave(object sender, EventArgs e)
         {
-
-
-
-            maskedTextBoxPho1.Text = "000 00 00 000";
-            maskedTextBoxPho1.ForeColor = Color.DarkGray;
+            // Only reset to default if mask is incomplete or it's the default value
+            if (!maskedTextBoxPho1.MaskCompleted || maskedTextBoxPho1.Text == "+000 00 00 000")
+            {
+                maskedTextBoxPho1.Text = "000 00 00 000";
+                maskedTextBoxPho1.ForeColor = Color.DarkGray;
                 pictureBoxErrorPho1.Visible = true;
+            }
             else
+            {
+                // Keep the entered value if mask is complete
+                maskedTextBoxPho1.ForeColor = Color.Black;
                 pictureBoxErrorPho1.Visible = false;
+            }
         }
 
         private void pictureBoxErrorPho1_MouseHover(object sender, EventArgs e)
@@ -403,7 +414,8 @@ namespace Student_Managemant.PLA.userControl
                 maskedTextBoxDOB1.ForeColor = Color.DarkGray;
 
             }
-            if (!IsValidaDate(maskedTextBoxDOB1.Text) || maskedTextBoxDOB1.Text == "00/00/000" || DateTime.Parse(maskedTextBoxDOB1.Text) > DateTime.Now)
+            if (!TryParseDate(maskedTextBoxDOB1.Text, out DateTime dob1) ||
+                dob1 > DateTime.Now)
                 pictureBoxErrorDOB1.Visible = true;
             else
                 pictureBoxErrorDOB1.Visible = false;
@@ -443,62 +455,114 @@ namespace Student_Managemant.PLA.userControl
             toolTip1.SetToolTip(pictureBoxErrorEmail1, "Invalid Email Format");
         }
 
+
+
+        // This is the complete function for handling the user search logic.
         private void textBoxUser_TextChanged(object sender, EventArgs e)
         {
-            // Get the search term and ensure it's not empty
             string searchTerm = textBoxUser.Text.Trim();
             if (string.IsNullOrEmpty(searchTerm))
             {
-                // Optionally clear the grid if the search box is empty
-                // dataGridViewUser.DataSource = null;
-                // Or re-load all data if needed, but for now, we just stop.
+                // When search term is empty, reload all users/students (you should implement this)
+                // For now, we just return.
+                // DisplayAllUsers(); 
                 return;
             }
 
-            // Determine the search column based on the ComboBox selection
             string searchColumn = "";
+            string searchOperator = "LIKE"; // Default for text-based search (Name)
+            bool useWildcards = true;       // Default for LIKE
+
+            // Determine the search column based on the ComboBox selection
             if (comboBoxSearchBy.SelectedIndex == 0)
             {
-                searchColumn = "User_Name";
+                searchColumn = "user_name"; // Based on your DB image
             }
             else if (comboBoxSearchBy.SelectedIndex == 1)
             {
-                searchColumn = "User_Pho"; // Assuming 'User_Pho' for Phone
+                searchColumn = "user_pho"; // Based on your DB image
             }
             else if (comboBoxSearchBy.SelectedIndex == 2)
             {
-                searchColumn = "User_CNIC"; // Assuming 'User_CNIC' for CNIC
+                // 🛑 FIX 1: Use the EXACT column name 'user_CNIC' (lowercase for MySQL compatibility)
+                searchColumn = "user_CNIC";
+
+                // 💡 FIX 2: Use '=' operator for exact CNIC matching
+                searchOperator = "=";
+                useWildcards = false;
             }
             else
             {
-                // Handle case where no selection is made (optional)
                 MessageBox.Show("Please select a search category first.", "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // The SQL query using the dynamic column and LIKE operator
-            string query = $"SELECT * FROM User_Table WHERE {searchColumn} LIKE @SearchTerm";
+            // The SQL query using the dynamic column and operator
+            string query = $"SELECT * FROM user_table WHERE {searchColumn} {searchOperator} @SearchTerm";
 
             try
             {
+                // ... (connection string setup remains the same) ...
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
                     connection.Open();
 
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
-                        // Add the parameter for the search term. 
-                        // Using '%' wildcards allows searching for partial matches.
-                        command.Parameters.AddWithValue("@SearchTerm", $"%{searchTerm}%");
+                        // Add the parameter for the search term, adjusting for LIKE vs. '='
+                        string finalSearchTerm = useWildcards ? $"%{searchTerm}%" : searchTerm;
+                        command.Parameters.AddWithValue("@SearchTerm", finalSearchTerm);
 
-                        MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                        {
+                            DataTable dataTable = new DataTable();
+                            adapter.Fill(dataTable);
 
-                        // Bind the result to the DataGridView
-                        dataGridViewStudent.DataSource = dataTable;
+                            // Bind the result to the DataGridView
+                            dataGridViewStudent.DataSource = dataTable;
+                        }
                     }
                 }
+
+                string query1 = "SELECT COUNT(*) FROM user_table";
+
+                try
+                {
+                    using (MySqlConnection connection = new MySqlConnection(connectionString))
+                    {
+                        connection.Open();
+                        using (MySqlCommand command = new MySqlCommand(query1, connection))
+                        {
+                            // ExecuteScalar is used to retrieve a single value (the count)
+                            object result = command.ExecuteScalar();
+
+                            if (result != null)
+                            {
+                                // Convert the result (which is typically a long) to a string and assign it to the label.
+                                labelTotalUser.Text = result.ToString();
+                            }
+                            else
+                            {
+                                // If result is null (shouldn't happen with COUNT(*)), set to 0.
+                                labelTotalUser.Text = "0";
+                            }
+                        }
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    // Handle database errors
+                    MessageBox.Show("Database Error while loading total users: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    labelTotalUser.Text = "Error"; // Indicate error on the label
+                }
+                catch (Exception ex)
+                {
+                    // Handle unexpected errors
+                    MessageBox.Show("An unexpected error occurred while loading total users: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    labelTotalUser.Text = "Error";
+                }
+                 
+            
             }
             catch (MySqlException ex)
             {
@@ -508,8 +572,18 @@ namespace Student_Managemant.PLA.userControl
             {
                 MessageBox.Show("An unexpected error occurred during search: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
+
+
+        private void LoadTotalUsers()
+        {
+            // SQL query to count all rows in the user_table
+            
+        }
+
+
+
+
 
         private void tabPageSearchUser_Enter(object sender, EventArgs e)
         {
@@ -519,7 +593,9 @@ namespace Student_Managemant.PLA.userControl
 
             // 2. Define the Query to fetch ALL users
             // NOTE: If you only want to display certain columns, list them instead of using *.
-            string query = "SELECT * FROM User_Table";
+            string query = "SELECT user_ID, user_name, user_Pass, user_Email, user_Pho, user_CNIC, " +
+                   "DATE_FORMAT(user_DOB, '%Y-%m-%d') AS user_DOB, " +
+                   "user_Gender, user_Role, user_Add FROM User_Table"; 
 
             try
             {
@@ -548,7 +624,7 @@ namespace Student_Managemant.PLA.userControl
                 // 5. Update the user count label
                 // Using Rows.Count from the DataGridView is slightly less accurate than the DataTable count
                 // but it reflects what is displayed.
-                dataGridViewStudent.Text = dataGridViewStudent.Rows.Count.ToString();
+                labelTotalUser.Text = dataGridViewStudent.Rows.Count.ToString();
             }
             catch (MySqlException ex)
             {
@@ -579,7 +655,7 @@ namespace Student_Managemant.PLA.userControl
             string address = textBoxAdd.Text.Trim();
             string email = textBoxEmail.Text.Trim();
             string phone = maskedTextBoxPho.Text.Replace(" ", "").Trim(); // Remove spaces from phone
-            string cnic = maskedTextBoxCNIC.Text.Trim();
+            string CI = maskedTextBoxCNIC.Text.Trim();
             string dobText = maskedTextBoxDOB.Text.Trim();
 
             // Determine Role
@@ -598,14 +674,14 @@ namespace Student_Managemant.PLA.userControl
 
             // --- 2. Validation Checks ---
 
-            // A. Check required fields
+         
             if (string.IsNullOrWhiteSpace(name))
             {
                 MessageBox.Show("Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 textBoxName.Focus();
                 validationPassed = false;
             }
-            else if (string.IsNullOrWhiteSpace(password) || password.Length < 6)
+            else if (string.IsNullOrWhiteSpace(password) || password.Length < 5)
             {
                 MessageBox.Show("Password is required and must be at least 6 characters.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 textBoxPassword.Focus();
@@ -618,7 +694,7 @@ namespace Student_Managemant.PLA.userControl
             }
 
             // B. Check Email
-            if (validationPassed && (!IsValidEmail(email) || email == "Gayan@gmail.com"))
+            if (validationPassed && (!IsValidEmail(email)))
             {
                 pictureBoxErrorEmail.Visible = true;
                 MessageBox.Show("Invalid Email format.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -646,8 +722,7 @@ namespace Student_Managemant.PLA.userControl
             // E. Check DOB validity and future date
             if (validationPassed)
             {
-                DateTime dob;
-                if (!IsValidaDate(dobText) || !DateTime.TryParse(dobText, out dob) || dob > DateTime.Now)
+                if (!TryParseDate(dobText, out DateTime parsedDob) || parsedDob > DateTime.Now)
                 {
                     pictureBoxErrorDOB.Visible = true;
                     MessageBox.Show("Invalid Date of Birth format or date is in the future.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -674,10 +749,10 @@ namespace Student_Managemant.PLA.userControl
                         {
                             // Add parameters
                             command.Parameters.AddWithValue("@Name", name);
-                            command.Parameters.AddWithValue("@Password", password); // NOTE: In a real app, hash this password!
+                            command.Parameters.AddWithValue("@Password", password); 
                             command.Parameters.AddWithValue("@Email", email);
                             command.Parameters.AddWithValue("@Phone", phone);
-                            command.Parameters.AddWithValue("@CNIC", cnic);
+                            command.Parameters.AddWithValue("@CNIC", CI);
                             command.Parameters.AddWithValue("@DOB", dobText); // Assuming DB column accepts string/date format '00/00/0000'
                             command.Parameters.AddWithValue("@Gender", gender);
                             command.Parameters.AddWithValue("@Role", role);
@@ -732,26 +807,26 @@ namespace Student_Managemant.PLA.userControl
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dataGridViewStudent.Rows[e.RowIndex];
-                ID = row.Cells["User_ID"].Value.ToString();
-                textBox4.Text = row.Cells["User_Name"].Value.ToString();
-                textBoxPass1.Text = row.Cells["User_Pass"].Value.ToString();
-                textBoxEmail1.Text = row.Cells["User_Email"].Value.ToString();
+                ID = row.Cells["Column1"].Value.ToString();
+                textBox4.Text = row.Cells[2].Value.ToString();
+                textBoxPass1.Text = row.Cells["Column3"].Value.ToString();
+                textBoxEmail1.Text = row.Cells["Column7"].Value.ToString();
                 textBoxEmail1.ForeColor = Color.Black;
-                maskedTextBoxPho1.Text = row.Cells["User_Pho"].Value.ToString();
+                maskedTextBoxPho1.Text = row.Cells["Column4"].Value.ToString();
                 maskedTextBoxPho1.ForeColor = Color.Black;
-                maskedTextBoxCNIC1.Text = row.Cells["User_CNIC"].Value.ToString();
+                maskedTextBoxCNIC1.Text = row.Cells["Column5"].Value.ToString();
                 maskedTextBoxCNIC1.ForeColor = Color.Black;
-                maskedTextBoxDOB1.Text = row.Cells["User_DOB"].Value.ToString();
+                maskedTextBoxDOB1.Text = row.Cells["Column6"].Value.ToString();
                 maskedTextBoxDOB1.ForeColor = Color.Black;
-                gender = row.Cells["gender"].Value.ToString();
+                gender = row.Cells["user_gender"].Value.ToString();
                 if (gender == "Male")
                     radioButtonMale1.Checked = true;
                 else
                     radioButtonFemale1.Checked = true;
-                Role = row.Cells["User_Role"].Value.ToString();
+                Role = row.Cells["Column9"].Value.ToString();
                 if (Role == "Admin")
                     checkBoxRole1.Checked = true;
-                textBoxAdd1.Text = row.Cells["User_Add"].Value.ToString();
+                textBoxAdd1.Text = row.Cells["Column8"].Value.ToString();
 
             }
         }
@@ -827,8 +902,7 @@ namespace Student_Managemant.PLA.userControl
             // D. Check DOB validity
             if (validationPassed)
             {
-                DateTime dob;
-                if (!IsValidaDate(dobText) || !DateTime.TryParse(dobText, out dob) || dob > DateTime.Now)
+                if (!TryParseDate(dobText, out DateTime parsedDob) || parsedDob > DateTime.Now)
                 {
                     pictureBoxErrorDOB1.Visible = true;
                     MessageBox.Show("Invalid Date of Birth format or date is in the future.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -919,7 +993,7 @@ namespace Student_Managemant.PLA.userControl
             // --- 3. Database Deletion ---
 
             // Delete query uses the primary key (ID) for identification
-            string query = "DELETE FROM User_Table WHERE User_ID = @ID"; // Assuming your primary key is User_ID
+            string query = "DELETE FROM User_Table WHERE user_ID = @ID"; // Assuming your primary key is User_ID
 
             try
             {

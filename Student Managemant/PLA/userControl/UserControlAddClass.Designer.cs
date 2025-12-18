@@ -434,7 +434,7 @@
             tabPageUPStudent.Location = new Point(4, 4);
             tabPageUPStudent.Name = "tabPageUPStudent";
             tabPageUPStudent.Padding = new Padding(3);
-            tabPageUPStudent.Size = new Size(934, 473);
+            tabPageUPStudent.Size = new Size(934, 467);
             tabPageUPStudent.TabIndex = 2;
             tabPageUPStudent.Text = "Update and Delete Student";
             tabPageUPStudent.UseVisualStyleBackColor = true;
@@ -553,7 +553,7 @@
             buttonDelete.FlatStyle = FlatStyle.Flat;
             buttonDelete.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             buttonDelete.ForeColor = Color.White;
-            buttonDelete.Location = new Point(262, 264);
+            buttonDelete.Location = new Point(262, 258);
             buttonDelete.Name = "buttonDelete";
             buttonDelete.Size = new Size(114, 31);
             buttonDelete.TabIndex = 0;
@@ -570,7 +570,7 @@
             buttonUpdate.FlatStyle = FlatStyle.Flat;
             buttonUpdate.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             buttonUpdate.ForeColor = Color.White;
-            buttonUpdate.Location = new Point(112, 264);
+            buttonUpdate.Location = new Point(112, 258);
             buttonUpdate.Name = "buttonUpdate";
             buttonUpdate.Size = new Size(114, 31);
             buttonUpdate.TabIndex = 0;

@@ -315,7 +315,7 @@ namespace Student_Managemant.PLA.userControl
             {
 
                 // 1. Get values from text boxes
-                string className = textBox1.Text.Trim(); // Class Name
+                string className = textBoxName1.Text.Trim(); // Class Name
 
 
 

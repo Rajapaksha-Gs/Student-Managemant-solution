@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Ocsp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -53,7 +54,7 @@ namespace Student_Managemant.PLA.Froms
             comboBoxClass1.SelectedIndex = -1;
             radioButtonMale1.Checked = false;
             radioButtonFemale1.Checked = false;
-            studentIDToUpdateOrDelete = ""; // Reset the tracking ID
+            SID = "";
         }
 
         private void pictureBoxSerach_MouseHover(object sender, EventArgs e)
@@ -73,10 +74,13 @@ namespace Student_Managemant.PLA.Froms
             comboBoxSearchBy.SelectedIndex = -1;
 
             string query = "SELECT " +
-                           "Student_ID, Student_Name, Student_RegNo, Student_Gender, Class_Name " +
-                           "FROM Student_Table " +
-                           "INNER JOIN Class_Table ON Student_Table.Class_ID = Class_Table.Class_ID " +
-                           "ORDER BY Student_Name ASC";
+                   "Student_ID, Student_Name, Student_RegNo, Student_Gender, Class_Name " +
+                   "FROM Student_Table " +
+                   "INNER JOIN Class_Table ON Student_Table.Class_ID = Class_Table.Class_ID " +
+                   "ORDER BY Student_Name ASC";
+
+            dataGridViewStudent.Columns[0].Visible = false;
+            labelCountStudent.Text = dataGridViewStudent.Rows.Count.ToString();
 
             ExecuteSearchAndDisplay(query);
         }
@@ -88,7 +92,7 @@ namespace Student_Managemant.PLA.Froms
 
         private void tabPageSearchStudent_Leave(object sender, EventArgs e)
         {
-            ClearTxtBox1();
+
         }
 
         private void tabPageUPStudent_Leave(object sender, EventArgs e)
@@ -162,7 +166,7 @@ namespace Student_Managemant.PLA.Froms
             }
         }
 
-
+        //validation and add student logic
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             string gender = "";
@@ -266,7 +270,7 @@ namespace Student_Managemant.PLA.Froms
             string searchQuery = string.Empty;
 
             // Base query structure (fetching all necessary student and class info)
-            string baseQuery = "SELECT Student_ID, Student_Name, Student_RegNo, Student_Gender, Class_Name " +
+            string baseQuery = "SELECT Student_ID, Student_Name, Student_RegNo, Student_Gender, Class_Name AS Student_Class " +
                                "FROM Student_Table " +
                                "INNER JOIN Class_Table ON Student_Table.Class_ID = Class_Table.Class_ID ";
 
@@ -345,16 +349,31 @@ namespace Student_Managemant.PLA.Froms
 
         private void dataGridViewStudent_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex != -1)
+            // 1. Header එක click කිරීමෙන් සිදුවන error වැළැක්වීමට
+            if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dataGridViewStudent.Rows[e.RowIndex];
 
-                // --- 1. Load Data from DataGridView Row to Controls ---
-                // Assuming column order: ID(0), Name(1), RegNo(2), Class_Name(3), Gender(4)
+                // 2. BoundItem එක පරීක්ෂාව
+                if (row.DataBoundItem is not DataRowView dataRow)
+                {
+                    return;
+                }
 
+                // 3. Convert.ToString භාවිතයෙන් ආරක්ෂිතව දත්ත ලබා ගැනීම
+                SID = Convert.ToString(row.Cells["Column1"].Value);
+                textBoxName1.Text = Convert.ToString(row.Cells["Column2"].Value);
+                textBoxRegNo1.Text = Convert.ToString(row.Cells[2].Value);
                 comboBoxClass1.Items.Clear();
 
-                string query = "SELECT Class_Name FROM Class_Table ORDER BY Class_Name ASC";
+                string gender = Convert.ToString(row.Cells["Column5"].Value);
+
+                // 4. ComboBox එක මුලින්ම Clear කර දත්ත නැවත ලබා ගැනීම
+
+
+                string query = "SELECT DISTINCT(Class_Name) FROM Class_Table";
+                try
+                {
                     using (MySqlConnection connection = new MySqlConnection(connectionString))
                     {
                         connection.Open();
@@ -364,47 +383,36 @@ namespace Student_Managemant.PLA.Froms
                         {
                             while (reader.Read())
                             {
-                                // Add each class name found to the ComboBox
                                 comboBoxClass1.Items.Add(reader.GetString(0));
                             }
                         }
                     }
-
-                    // Set the selected item in the ComboBox to the student's current class name
-                    comboBoxClass1.SelectedItem = studentClassName;
-                }
-                catch (MySqlException ex)
-                {
-                    MessageBox.Show("Database Error while loading classes: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return; // Exit if class loading fails
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("An unexpected error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    MessageBox.Show("Error loading classes: " + ex.Message);
                 }
 
 
-                // --- 3. Handle Gender Radio Buttons ---
-                string gender = row.Cells[4].Value.ToString(); // Student_Gender (Index 4)
+                comboBoxClass1.SelectedItem = Convert.ToString(row.Cells["Column4"].Value);
 
-                if (gender == "Male")
+
+                if (row.Cells["Column5"].Value.ToString() == "Male")
                 {
                     radioButtonMale1.Checked = true;
-                    radioButtonFemale1.Checked = false;
+
                 }
-                else if (gender == "Female")
+                else if (row.Cells["Column5"].Value.ToString() == "Female")
                 {
                     radioButtonFemale1.Checked = true;
-                    radioButtonMale1.Checked = false;
                 }
-                else // Clear selection if gender is unrecognized
-                {
-                    radioButtonMale1.Checked = false;
-                    radioButtonFemale1.Checked = false;
-                }
+
+                tabControlAddStudent.SelectedTab = tabPageUPStudent;
+
+
             }
         }
+
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
@@ -601,6 +609,114 @@ namespace Student_Managemant.PLA.Froms
                 MessageBox.Show("An unexpected error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void dataGridViewStudent_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void tabControlAddStudent_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPageAddStudent_Enter(object sender, EventArgs e)
+        {
+            ClearTxtBox1();
+        }
+
+        private void tabPageAddStudent_Leave(object sender, EventArgs e)
+        {
+            ClearTxtBox1();
+        }
+
+        private void tabPageUPStudent_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonDelete_Click_1(object sender, EventArgs e)
+        {
+
+            // --- 1. Data Validation Check: Only Reg No is strictly required for deletion ---
+            string regNo = textBoxRegNo1.Text.Trim();
+
+            if (string.IsNullOrEmpty(regNo))
+            {
+                MessageBox.Show("Please enter the **Registration Number** of the student you want to delete.", "Missing Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                textBoxRegNo1.Focus();
+                return;
+            }
+
+            // --- 2. Confirmation Prompt ---
+            DialogResult confirm = MessageBox.Show($"Are you sure you want to permanently delete the student with Registration Number **{regNo}**?",
+                                                   "Confirm Deletion",
+                                                   MessageBoxButtons.YesNo,
+                                                   MessageBoxIcon.Question);
+
+            if (confirm == DialogResult.No)
+            {
+                return; // User cancelled the operation
+            }
+
+            MySqlTransaction transaction = null;
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Start a transaction (optional for a single DELETE, but good for consistency)
+                    transaction = connection.BeginTransaction();
+
+                    // --- SQL: Delete the Student Record based on Reg No ---
+                    string queryDeleteStudent = "DELETE FROM Student_Table WHERE Student_RegNo = @RegNo";
+
+                    using (MySqlCommand commandDelete = new MySqlCommand(queryDeleteStudent, connection, transaction))
+                    {
+                        // Use parameter for safe deletion (crucial WHERE clause)
+                        commandDelete.Parameters.AddWithValue("@RegNo", regNo);
+
+                        int rowsAffected = commandDelete.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            // Success! Commit the transaction
+                            transaction.Commit();
+                            MessageBox.Show("Student with Reg No **" + regNo + "** was successfully deleted!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            ClearTxtBox();
+                        }
+                        else
+                        {
+                            // No rows affected means the Reg No was not found
+                            transaction.Rollback();
+                            MessageBox.Show($"Deletion failed. Student with Registration Number **{regNo}** was not found.", "Deletion Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                transaction?.Rollback(); // Rollback if transaction exists and an error occurred
+
+                // Note: Delete operations typically don't cause a 1062 error, but may hit foreign key constraints (1451)
+                if (ex.Number == 1451) // Foreign Key Constraint Violation
+                {
+                    MessageBox.Show("Cannot delete student because they have dependent records (e.g., marks, attendance). Remove those first.", "Deletion Blocked", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Database Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                transaction?.Rollback(); // Rollback if transaction exists and a general error occurred
+                MessageBox.Show("An unexpected error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+    }
     }
 
-}
+
